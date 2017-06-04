@@ -3,10 +3,10 @@ import path from "path";
 
 export default {
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.((png)|(eot)|(woff)|(woff2)|(ttf)|(svg)|(gif))(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file?name=/[hash].[ext]"
+        loader: "file-loader?name=/[hash].[ext]"
       },
       {test: /\.json$/, loader: "json-loader"},
       {
@@ -20,7 +20,7 @@ export default {
 
   plugins: [
     new webpack.ProvidePlugin({
-      "fetch": "imports?this=>global!exports?global.fetch!whatwg-fetch"
+      "fetch": "imports-loader?this=>global!exports?global.fetch!whatwg-fetch"
     })
   ],
 
